@@ -69,7 +69,7 @@ const Experience = () => {
               key={id}
               className="flex flex-col lg:flex-row gap-10 lg:gap-0 items-center justify-between p-6 shadow-lg odd:shadow-blue-400 even:shadow-rose-400 rounded-xl hover:scale-105 ease-in duration-300"
             >
-              <Image src={src} width="64px" height="64px" />
+              <Image src={src} width="64px" height="64px" alt="randomness" />
               <h3 className="font-light">{title}</h3>
             </div>
           ))}

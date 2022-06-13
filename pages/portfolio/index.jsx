@@ -66,7 +66,7 @@ const index = ({ portfolios }) => {
               >
                 <Image
                   src={imageSrc}
-                  alt=""
+                  alt="random"
                   className="rounded-md duration-200 hover:scale-105"
                 />
                 <h2 className="text-center text-base capitalize my-4 font-light duration-200 group-hover:underline underline-offset-4">
