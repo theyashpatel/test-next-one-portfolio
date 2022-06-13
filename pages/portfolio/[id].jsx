@@ -4,7 +4,7 @@ import installNode from "../../public/assets/portfolio/installNode.jpg";
 import reactParallax from "../../public/assets/portfolio/reactParallax.jpg";
 import usestate from "../../public/assets/portfolio/usestate.jpg";
 import reactWeather from "../../public/assets/portfolio/reactWeather.jpg";
-import reactPortfolio from "../../public/assets/portfolio/reactPortfolio.jpg";
+import reactPortfolio2 from "../../public/assets/portfolio/reactPortfolio2.jpg";
 import Image from "next/image";
 import { AiOutlineCaretRight } from "react-icons/ai";
 import { BiChevronLeft } from "react-icons/bi";
@@ -35,12 +35,6 @@ const portfolios = [
     title: "react parallax scroll",
     imageSrc: reactParallax,
     url: "react-parallax",
-  },
-  {
-    id: 5,
-    title: "react portfolio website",
-    imageSrc: reactPortfolio,
-    url: "react-portfolio",
   },
 ];
 
