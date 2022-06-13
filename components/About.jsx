@@ -1,42 +1,54 @@
 import React from "react";
+import { MdExpandMore } from "react-icons/md";
+import Link from "next/link";
 
 const About = () => {
   return (
-    <div id="about" className="w-full md:h-screen p-2 flex items-center py-1">
-      <div className="max-w-screen-xl mx-auto md:grid grid-cols-3 gap-8">
-        <div className="col-span-2">
-          <p className="uppercase text-xl tracking-widest text-[#5651e5]">
-            About
+    <div id="me" className="w-full">
+      <div className="max-w-screen-xl mx-auto px-8 py-16">
+        <p className="text-5xl md:text-7xl tracking-wider uppercase text-blue-500 font-bold text-center md:text-left">
+          Me
+        </p>
+        <div className="shadow-xl shadow-blue-300 my-8 px-8">
+          <p className="py-4 max-w-2xl mx-auto">
+            Is bleak tapping from maiden thy bird, the me ever door wind leave.
+            Is plume as followed lattice air, of i horror nodded bird opened
+            laden his desert above, black and turning off than oer still in
+            then, but that and morrow into at this, as angels wide a we.
           </p>
-          <h2 className="py-2 text-gray-600">Who I am</h2>
-          <p className="py-2 text-gray-600">
-            have spent the last 12 years in the fire service working as a
-            professional firefighter & paramedic. have always had a knack for
-            technology and working with computers. In 2019 started working with
-            HTML & CSS to make some minor edits on a small business website that
-            I was operating. What I thought was just a few small edits turned
-            into a love for programming.
+          <p className="py-4 max-w-2xl mx-auto">
+            Straight bends all i a shutter. Though is prophet being much of
+            whether forget the. Tapping only heart nothing this and chamber
+            sitting word if. Obeisance by before the i bore more only i
+            shrieked. Visiter i implore came for. Of then soul raven thy visiter
+            scarce bust, i truly whose door unhappy the a. Help smiling the
+            plutonian thrilled my of wandering name surely, dirges the in the
+            burning there nothing that bore. The.
           </p>
-          <p className="py-2 text-gray-600">
-            Fascinated with how intricate programming can be I was quickly drawn
-            to learn more. I started learning javascript and was even more
-            enthused with making websites interactive. I then started
-            freelancing for e-commerce companies on the Shopify platform. I am
-            now spending my time building projects with React JS, Firebase, and
-            learning new technologies.
-          </p>
-
-          <p className="py-2 text-gray-600 underline cursor-pointer">
-            Check out some of my latest projects
+          <p className="py-4 max-w-2xl mx-auto">
+            Is bleak tapping from maiden thy bird, the me ever door wind leave.
+            Is plume as followed lattice air, of i horror nodded bird opened
+            laden his desert above, black and turning off than oer still in
+            then, but that and morrow into at this, as angels wide a we.
           </p>
         </div>
-
-        <div className="w-full h-auto shadow-xl shadow-gray-400 rounded-xl flex items-center justify-center hover:scale-105 ease-in duration-300">
-          <img
-            className="rounded-xl"
-            src="https://images.unsplash.com/photo-1525547719571-a2d4ac8945e2?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1364&q=80"
-            alt="/"
-          />
+        <div className="flex items-center justify-center gap-10">
+          <Link href="/resume.pdf" download={true}>
+            <div className="group flex items-center justify-center my-8 bg-blue-500 text-white px-6 py-3 font-bold uppercase rounded-md tracking-wider cursor-pointer">
+              resume
+              <span className="-rotate-90 duration-100 ease-in group-hover:rotate-0">
+                <MdExpandMore size={25} />
+              </span>
+            </div>
+          </Link>
+          <Link href="/#portfolio">
+            <div className="group flex items-center justify-center my-8 bg-blue-500 text-white px-6 py-3 font-bold uppercase rounded-md tracking-wider cursor-pointer">
+              my portfolio
+              <span className="-rotate-90 duration-100 ease-in group-hover:-rotate-180">
+                <MdExpandMore size={25} />
+              </span>
+            </div>
+          </Link>
         </div>
       </div>
     </div>

@@ -5,10 +5,10 @@ module.exports = {
     "./components/**/*.{js,ts,jsx,tsx}",
   ],
   theme: {
-    extend: {
-      colors: {
-        myblue: "#5651e5",
-      },
+    extend: {},
+
+    fontFamily: {
+      signature: ["Dancing Script"],
     },
   },
   plugins: [],

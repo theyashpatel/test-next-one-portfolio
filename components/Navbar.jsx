@@ -12,126 +12,130 @@ import {
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
-  const [shadow, setShadow] = useState(false);
+  const [pageScroll, setPageScroll] = useState(false);
 
   useEffect(() => {
     const sub = window.addEventListener("scroll", () =>
-      setShadow(window.scrollY >= 90)
+      setPageScroll(window.scrollY >= 90)
     );
 
     return sub;
   }, []);
 
+  const links = [
+    {
+      id: 1,
+      link: "home",
+    },
+    {
+      id: 2,
+      link: "portfolio",
+    },
+    {
+      id: 3,
+      link: "experience",
+    },
+    {
+      id: 4,
+      link: "me",
+    },
+    {
+      id: 5,
+      link: "contact",
+    },
+  ];
+
   return (
     <div
-      className={`w-full h-20 z-[100] fixed ${
-        shadow && "shadow-xl duration-300 ease-in bg-white"
+      className={`w-full h-20 z-[100] fixed bg-white text-black duration-300 ease-in ${
+        pageScroll && "bg-black text-[#fff]"
       }`}
     >
-      <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
-        <h2>Yash Patel</h2>
+      <div className="flex justify-between items-center w-full h-full max-w-screen-xl mx-auto p-4">
+        <Link href="/#home">
+          <h2 className="text-3xl lg:text-4xl font-bold uppercase underline underline-offset-2 tracking-wider cursor-pointer">
+            yash
+          </h2>
+        </Link>
 
         <div>
           <ul className="hidden md:flex">
-            <Link href="/">
-              <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
-            </Link>
-            <Link href="/#about">
-              <li className="ml-10 text-sm uppercase hover:border-b">About</li>
-            </Link>
-            <Link href="/#skills">
-              <li className="ml-10 text-sm uppercase hover:border-b">Skills</li>
-            </Link>
-            <Link href="/#projects">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Projects
-              </li>
-            </Link>
-            <Link href="/#contact">
-              <li className="ml-10 text-sm uppercase hover:border-b">
-                Contact
-              </li>
-            </Link>
+            {links.map(({ id, link }) => (
+              <Link key={id} href={`/#${link}`}>
+                <li className="ml-10 text-sm uppercase cursor-pointer duration-200 ease-out hover:scale-105 tracking-wider">
+                  {link}
+                </li>
+              </Link>
+            ))}
           </ul>
 
           {/* mobile menu */}
 
-          <div className="md:hidden" onClick={() => setNav(true)}>
-            <FaBars size={30} />
-          </div>
+          {!nav && (
+            <div className="md:hidden" onClick={() => setNav(true)}>
+              <FaBars size={30} />
+            </div>
+          )}
         </div>
       </div>
 
       <div
         className={
-          nav ? "md:hidden fixed left-0 top-0 w-full h-screen bg-black/70" : ""
+          nav
+            ? "md:hidden fixed left-0 top-0 w-full h-full bg-black/70 backdrop-blur"
+            : ""
+        }
+      />
+      <div
+        className={
+          nav
+            ? "fixed left-0 top-0 w-4/5 h-full bg-gradient-to-r from-blue-600 to-cyan-600 text-white p-10 ease-in duration-500"
+            : "fixed top-0 left-[-100%] p-10 h-full ease-in duration-500"
         }
       >
-        <div
-          className={
-            nav
-              ? "fixed left-0 w-[75%] sm:2-[60%] md:w-[45%] h-screen bg-white p-10 ease-in duration-500"
-              : "fixed left-[-100%] top-0 p-10 h-screen ease-in duration-500"
-          }
-        >
-          <div>
-            <div className="flex w-full items-center justify-between">
-              <h2 className="">Yash Patel</h2>
-              <div
-                className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer"
+        <div>
+          <div className="flex w-full items-center justify-between">
+            <Link href="/#home">
+              <h2
                 onClick={() => setNav(false)}
+                className="text-3xl lg:text-4xl font-bold uppercase underline underline-offset-2 tracking-wider cursor-pointer"
               >
-                <FaTimes size={30} />
-              </div>
-            </div>
-
-            <div className="border-b border-gray-300 my-4">
-              <p className="w-[85%] md:w-[90%] py-4">
-                Let's build something legendary together
-              </p>
+                Yash
+              </h2>
+            </Link>
+            <div className=" p-3 cursor-pointer" onClick={() => setNav(false)}>
+              <FaTimes size={30} />
             </div>
           </div>
+        </div>
 
-          <div className="py-4 flex flex-col">
-            <ul className="uppercase">
-              <Link href="/">
-                <li className="py-4 text-sm">Home</li>
+        <div className="mt-24 flex flex-col h-fit gap-20">
+          <ul className="uppercase">
+            {links.map(({ id, link }) => (
+              <Link key={id} href={`/#${link}`}>
+                <li
+                  onClick={() => setNav(false)}
+                  className="py-4 text-2xl tracking-wider cursor-pointer"
+                >
+                  {link}
+                </li>
               </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">About</li>
-              </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">Skills</li>
-              </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">Projects</li>
-              </Link>
-              <Link href="/">
-                <li className="py-4 text-sm">Contact</li>
-              </Link>
-            </ul>
+            ))}
+          </ul>
 
-            <div className="pt-40">
-              <p className="uppercase tracking-widest text-[#5651e5] ">
-                Let's Connect
-              </p>
-
-              <div
-                className="flex intece
-               justify-between my-4 w-full sm:w-[80%]"
-              >
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
-                  <FaLinkedinIn />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
-                  <FaGithub />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
-                  <FaTwitter />
-                </div>
-                <div className="rounded-full shadow-lg shadow-gray-400 p-3 cursor-pointer hover:scale-105 ease-in duration-300 ">
-                  <FaFacebook />
-                </div>
+          <div className="">
+            <div className="grid grid-cols-2 mx-auto w-4/5 gap-10">
+              <div className="flex items-center justify-center  rounded-full shadow-md shadow-white p-3 cursor-pointer">
+                <FaLinkedinIn size={25} />
+              </div>
+              <div className="flex items-center justify-center  rounded-full shadow-md shadow-white p-3 cursor-pointer">
+                <FaGithub size={25} />
+              </div>
+              <div className="flex items-center justify-center  rounded-full shadow-md shadow-white p-3 cursor-pointer">
+                <FaTwitter size={25} />
+              </div>
+              <div className="flex items-center justify-center  rounded-full shadow-md shadow-white p-3 cursor-pointer">
+                <FaFacebook size={25} />
               </div>
             </div>
           </div>

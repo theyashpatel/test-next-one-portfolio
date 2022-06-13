@@ -8,10 +8,9 @@ import nextjs from "../public/assets/experience/nextjs.png";
 import tailwind from "../public/assets/experience/tailwind.png";
 import graphql from "../public/assets/experience/graphql.png";
 import node from "../public/assets/experience/node.png";
-import next from "next";
 
-const Skills = () => {
-  const skills = [
+const Experience = () => {
+  const experience = [
     {
       id: 1,
       title: "HTML",
@@ -55,27 +54,23 @@ const Skills = () => {
   ];
 
   return (
-    <div id="skills" className="w-full lg:h-screen p-2">
-      <div className="max-w-screen-xl mx-auto flex flex-col justify-center h-full">
-        <p className="text-xl tracking-widest uppercase text-[#5651e5]">
-          Skills
+    <div id="experience" className="w-full">
+      <div className="max-w-screen-xl mx-auto px-8 py-16 text-center md:text-left">
+        <p className="text-5xl md:text-7xl tracking-wider uppercase text-blue-500 font-bold">
+          Experience
         </p>
-        <h2>What I Can Do</h2>
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-          {skills.map(({ id, title, src }) => (
+        <h2 className="py-4 max-w-lg">
+          Entrance gloating i nothing soul quoth desolate. My he bird still just
+          of theeby lattice. Nearly ominous leave god is.
+        </h2>
+        <div className="grid lg:grid-cols-4 gap-8">
+          {experience.map(({ id, title, src }) => (
             <div
               key={id}
-              className="p-6 shadow-xl rounded-xl hover:scale-105 ease-in duration-300"
+              className="flex flex-col lg:flex-row gap-10 lg:gap-0 items-center justify-between p-6 shadow-lg odd:shadow-blue-400 even:shadow-rose-400 rounded-xl hover:scale-105 ease-in duration-300"
             >
-              <div className="grid grid-cols-2 gap-4 justify-center items-center">
-                <div className="m-auto">
-                  <Image src={src} width="64px" height="64px" />
-                </div>
-
-                <div className="flex flex-col items-center justify-center">
-                  <h3>{title}</h3>
-                </div>
-              </div>
+              <Image src={src} width="64px" height="64px" />
+              <h3 className="font-light">{title}</h3>
             </div>
           ))}
         </div>
@@ -84,4 +79,4 @@ const Skills = () => {
   );
 };
 
-export default Skills;
+export default Experience;
