@@ -1,6 +1,5 @@
-import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import {
   FaBars,
@@ -13,9 +12,22 @@ import {
 
 const Navbar = () => {
   const [nav, setNav] = useState(false);
+  const [shadow, setShadow] = useState(false);
+
+  useEffect(() => {
+    const sub = window.addEventListener("scroll", () =>
+      setShadow(window.scrollY >= 90)
+    );
+
+    return sub;
+  }, []);
 
   return (
-    <div className="fixed w-full h-20 shadow-xl z-10">
+    <div
+      className={`w-full h-20 z-[100] fixed ${
+        shadow && "shadow-xl duration-300 ease-in bg-white"
+      }`}
+    >
       <div className="flex justify-between items-center w-full h-full px-4 2xl:px-16">
         <h2>Yash Patel</h2>
 
@@ -24,18 +36,18 @@ const Navbar = () => {
             <Link href="/">
               <li className="ml-10 text-sm uppercase hover:border-b">Home</li>
             </Link>
-            <Link href="/">
+            <Link href="/#about">
               <li className="ml-10 text-sm uppercase hover:border-b">About</li>
             </Link>
-            <Link href="/">
+            <Link href="/#skills">
               <li className="ml-10 text-sm uppercase hover:border-b">Skills</li>
             </Link>
-            <Link href="/">
+            <Link href="/#projects">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Projects
               </li>
             </Link>
-            <Link href="/">
+            <Link href="/#contact">
               <li className="ml-10 text-sm uppercase hover:border-b">
                 Contact
               </li>
