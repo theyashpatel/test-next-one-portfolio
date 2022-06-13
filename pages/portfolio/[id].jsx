@@ -44,15 +44,27 @@ const portfolios = [
   },
 ];
 
+export async function getStaticPaths() {
+  const paths = portfolios.map((portfolio) => ({
+    params: { id: portfolio.url },
+  }));
+
+  return {
+    paths,
+    fallback: false,
+  };
+}
+
 const getPortfolioFrom = (url) =>
   portfolios.filter((portfolio) => portfolio.url === url)[0];
 
-const OnePortfolio = () => {
-  const {
-    query: { id: portfolioId },
-  } = useRouter();
+export async function getStaticProps({ params }) {
+  const portfolio = getPortfolioFrom(params.id);
 
-  const { title, imageSrc } = getPortfolioFrom(portfolioId);
+  return { props: { portfolio } };
+}
+
+const OnePortfolio = ({ portfolio: { title, imageSrc } }) => {
   return (
     <div id="home" className=" h-fit w-full text-center">
       <div className="max-w-screen-xl mx-auto w-full h-full pt-24 p-8 flex flex-col">
